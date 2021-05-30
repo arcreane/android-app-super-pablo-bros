@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="debug_angle" type="id" />
+    <item name="debug_direction" type="id" />
+    <item name="debug_action" type="id" />
+</resources>

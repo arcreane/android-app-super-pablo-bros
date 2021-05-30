@@ -11,6 +11,7 @@ public class GameElement {
      * Default constructor
      */
     public GameElement() {
+
     }
 
     /**

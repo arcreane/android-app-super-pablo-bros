@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -29,33 +30,5 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/rounded_button"
         android:text="Jump" />
-
-    <TextView
-        android:id="@+id/angle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:text="angle : none"
-        android:textSize="50sp" />
-
-    <TextView
-        android:id="@+id/direction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
-        android:text="direction : none"
-        android:textSize="50sp" />
-
-    <TextView
-        android:id="@+id/action"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:text="action : none"
-        android:textSize="50sp" />
-
+    
 </RelativeLayout>
