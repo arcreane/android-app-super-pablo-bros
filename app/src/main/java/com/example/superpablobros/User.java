@@ -1,16 +1,19 @@
 package com.example.superpablobros;
 
+import android.widget.LinearLayout;
+
 import java.util.*;
 
 /**
  * 
  */
-public class User {
+public class User extends GameElement{
 
     /**
      * Default constructor
      */
     public User() {
+
     }
 
     /**
