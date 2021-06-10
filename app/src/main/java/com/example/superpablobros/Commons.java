@@ -10,14 +10,18 @@ public interface Commons {
         // the frame period
         int FRAME_PERIOD = 1000 / MAX_FPS;
 
+        //sizes
         int BIG_PABLO_HEIGHT = 32;
         int SMALL_PABLO_HEIGHT = 16;
         int PABLO_WIDTH = 16;
 
+        int CLASSIC_BLOCK_WIDTH = 16;
+        int CLASSIC_BLOCK_HEIGHT = 16;
 
         //debug
-        boolean debug = false;
-        float debug_elements_margin = 20;
+        boolean DEBUG = false;
+        float DEBUG_ELEMENTS_MARGIN = 10f;
+        float DEBUG_ELEMENT_TEXT_SIZE = 20f;
 
         //values transformers
         static float dpFromPx(final Context context, final float px) {

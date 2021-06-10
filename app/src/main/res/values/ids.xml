@@ -3,4 +3,7 @@
     <item name="debug_angle" type="id" />
     <item name="debug_direction" type="id" />
     <item name="debug_action" type="id" />
+    <item name="debug_screen_width_px" type="id" />
+    <item name="debug_screen_height_px" type="id" />
+
 </resources>

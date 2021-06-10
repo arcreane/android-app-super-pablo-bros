@@ -41,7 +41,7 @@ public class BitmapBank {
 
     //function to scale the
     private Bitmap getScaledExtractedBitmap(MainActivity mainActivity, int x, int y, int width, int height){
-        float newProportionFactor = 10f;
+        float newProportionFactor = mainActivity.getCurrent_screen().getHeight()/208;
         Bitmap extractedBitmap = Bitmap.createBitmap(spriteSheet, x, y, width, height);
         return Bitmap.createScaledBitmap(extractedBitmap, (int)(extractedBitmap.getWidth()*newProportionFactor), (int)(extractedBitmap.getHeight()*newProportionFactor), false);
     }

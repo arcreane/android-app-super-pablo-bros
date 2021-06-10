@@ -18,36 +18,37 @@
 
         </RelativeLayout>
 
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:elevation="1dp">-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/debugLayout"
+            android:elevation="1dp">
 
-<!--            <io.github.controlwear.virtual.joystick.android.JoystickView-->
-<!--                android:id="@+id/joystickView"-->
-<!--                android:layout_width="244dp"-->
-<!--                android:layout_height="244dp"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:rotation="90"-->
-<!--                app:JV_backgroundColor="#2D696A6A"-->
-<!--                app:JV_borderColor="#396A6A6A"-->
-<!--                app:JV_borderWidth="1dp"-->
-<!--                app:JV_buttonColor="#95555555"-->
-<!--                app:JV_buttonSizeRatio="23%"-->
-<!--                app:JV_fixedCenter="false" />-->
+            <io.github.controlwear.virtual.joystick.android.JoystickView
+                android:id="@+id/joystickView"
+                android:layout_width="244dp"
+                android:layout_height="244dp"
+                android:layout_alignParentBottom="true"
+                android:rotation="90"
+                app:JV_backgroundColor="#2D696A6A"
+                app:JV_borderColor="#396A6A6A"
+                app:JV_borderWidth="1dp"
+                app:JV_buttonColor="#95555555"
+                app:JV_buttonSizeRatio="23%"
+                app:JV_fixedCenter="false" />
 
-<!--            <Button-->
-<!--                android:id="@+id/jump"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:layout_marginRight="50dp"-->
-<!--                android:layout_marginBottom="50dp"-->
-<!--                android:background="@drawable/rounded_button"-->
-<!--                android:text="Jump" />-->
+            <Button
+                android:id="@+id/jump"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/rounded_button"
+                android:text="Jump" />
 
-<!--        </RelativeLayout>-->
+        </RelativeLayout>
 
     </FrameLayout>
 

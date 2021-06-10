@@ -21,14 +21,10 @@ public class GameManager {
      * Default constructor
      */
     public GameManager(MainActivity mainActivity) {
-
-//        player = new User(gameArea);
-//        player.draw(gameArea.getCanvas(), Color.rgb(255, 45, 0));
         bitmapBank = new BitmapBank(mainActivity);
         gameArea = new GameArea(mainActivity, this, bitmapBank);
         mainActivity.getGameContainer().addView(gameArea);
-        pablo = new Pablo(bitmapBank, 150, 150, Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT);
-
+        pablo = new Pablo(bitmapBank, mainActivity.getCurrent_screen().getWidth()/2, mainActivity.getCurrent_screen().getHeight()-(Commons.BIG_PABLO_HEIGHT*(mainActivity.getCurrent_screen().getHeight()/208)), Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT);
     }
 
     private void getSprites() {
@@ -51,4 +47,20 @@ public class GameManager {
     public GameArea getGameArea() {
         return this.gameArea;
     }
+
+    /**
+     *
+     */
+    public MainThread getMainThread() {
+        return this.mainThread;
+    }
+
+    /**
+     *
+     */
+    public Pablo getPablo() {
+        return this.pablo;
+    }
+
+
 }

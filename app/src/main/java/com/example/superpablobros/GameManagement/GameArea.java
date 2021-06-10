@@ -45,16 +45,16 @@ public class GameArea extends SurfaceView implements SurfaceHolder.Callback{
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-//        boolean retry = true;
-//        while (retry) {
-//            try {
-//                thread.setRunning(false);
-//                thread.join();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            retry = false;
-//        }
+        boolean retry = true;
+        while (retry) {
+            try {
+                gameManager.getMainThread().setRunning(false);
+                gameManager.getMainThread().join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            retry = false;
+        }
     }
 
     @Override
@@ -64,7 +64,8 @@ public class GameArea extends SurfaceView implements SurfaceHolder.Callback{
 
     public void doDraw(Canvas canvas){
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        canvas.drawBitmap(bitmapBank.getFrame(PabloSprites.STANDING, 0), 150,150, null);
+        gameManager.getPablo().setCurrentSprite(bitmapBank.getFrame(PabloSprites.STANDING, 0));
+        gameManager.getPablo().draw(canvas);
     }
     /**
      * 
