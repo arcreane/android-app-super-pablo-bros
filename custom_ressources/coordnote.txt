@@ -1,0 +1,10 @@
+grand mario debout 1 a droite 26 en bas 32 de haut 16 de large
+petit mario debout 1 a droite 9 en bas 16 de haut 16 de large
+mario qui grandit 373 de la droite
+ecart de 5 entre les grosse partie et 1 pour les petit
+
+bloc 16*16
+
+bloc sol 1 a droite 131 du haut
+
+13 block de haut l'écran

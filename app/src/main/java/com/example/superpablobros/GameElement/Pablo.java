@@ -1,28 +1,28 @@
-package com.example.superpablobros;
+package com.example.superpablobros.GameElement;
 
-import android.widget.LinearLayout;
+import android.graphics.Bitmap;
 
-import java.util.*;
+import com.example.superpablobros.Commons;
+import com.example.superpablobros.GameManagement.BitmapBank;
+import com.example.superpablobros.GameManagement.GameArea;
 
 /**
  * 
  */
-public class User extends GameElement{
+public class Pablo extends GameElement {
 
+    Bitmap currentSprite;
     /**
      * Default constructor
      */
-    public User() {
-
+    public Pablo(BitmapBank bitmapBank, int p_iX, int p_iY, int p_iWidth, int p_iHeight) {
+        super(bitmapBank, p_iX, p_iY, p_iWidth, p_iHeight);
     }
 
     /**
      * 
      */
     public int m_iLP;
-
-
-
 
 
     /**
@@ -35,7 +35,7 @@ public class User extends GameElement{
     /**
      * 
      */
-    public void OnMoove() {
+    public void OnMove() {
         // TODO implement here
     }
 

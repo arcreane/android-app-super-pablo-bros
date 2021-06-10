@@ -1,16 +1,18 @@
-package com.example.superpablobros;
+package com.example.superpablobros.GameElement;
 
-import java.util.*;
+import com.example.superpablobros.GameElement.GameElement;
+import com.example.superpablobros.LinearMove;
 
 /**
  * 
  */
-public class Mushroom extends User implements LinearMove {
+public class Mushroom extends GameElement implements LinearMove {
 
     /**
      * Default constructor
      */
     public Mushroom() {
+        super( null,1,1,1,1);
     }
 
     /**

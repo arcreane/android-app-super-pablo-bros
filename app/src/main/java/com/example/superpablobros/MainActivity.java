@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.superpablobros.GameManagement.GameManager;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -20,25 +19,26 @@ public class MainActivity extends AppCompatActivity {
     String m_sAngle;
     String m_sDirection;
     String m_sAction;
-
+    RelativeLayout gameContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         //remove top bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //game view
-        RelativeLayout gameContainer = (RelativeLayout) findViewById(R.id.gameLayout);
-
+        gameContainer = (RelativeLayout) findViewById(R.id.gameLayout);
         //player control
-        JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
-        Button jump_button = (Button) findViewById(R.id.jump);
+//        JoystickView joystick = (JoystickView) findViewById(R.id.joystickView);
+//        Button jump_button = (Button) findViewById(R.id.jump);
 
         if(Commons.debug){
-            InitDebug(gameContainer, joystick, jump_button);
+//            InitDebug(gameContainer, joystick, jump_button);
         }else{
-            User pablo = new User();
+            GameManager gameManager = new GameManager(this);
         }
     }
 
@@ -122,5 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public RelativeLayout getGameContainer(){
+        return this.gameContainer;
     }
 }
