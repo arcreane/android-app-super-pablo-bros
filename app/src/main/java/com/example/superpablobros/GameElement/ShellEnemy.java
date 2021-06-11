@@ -5,13 +5,13 @@ import com.example.superpablobros.GameElement.GameElement;
 /**
  * 
  */
-public class ShellEnnemy extends GameElement {
+public class ShellEnemy extends GameElement {
 
     /**
      * Default constructor
      */
-    public ShellEnnemy() {
-        super( null,1,1,1,1);
+    public ShellEnemy() {
+        super();
     }
 
 

@@ -14,6 +14,7 @@ public class GameManager {
 
     Pablo pablo;
     Paint paint = new Paint();
+    MainActivity mainActivity;
     GameArea gameArea;
     MainThread mainThread;
     BitmapBank bitmapBank;
@@ -21,10 +22,11 @@ public class GameManager {
      * Default constructor
      */
     public GameManager(MainActivity mainActivity) {
-        bitmapBank = new BitmapBank(mainActivity);
-        gameArea = new GameArea(mainActivity, this, bitmapBank);
+        this.mainActivity = mainActivity;
+        bitmapBank = new BitmapBank(this.mainActivity);
+        gameArea = new GameArea(this.mainActivity, this, bitmapBank);
         mainActivity.getGameContainer().addView(gameArea);
-        pablo = new Pablo(bitmapBank, mainActivity.getCurrent_screen().getWidth()/2, mainActivity.getCurrent_screen().getHeight()-(Commons.BIG_PABLO_HEIGHT*(mainActivity.getCurrent_screen().getHeight()/208)), Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT);
+        pablo = new Pablo(this.mainActivity, bitmapBank, this.mainActivity.getCurrent_screen().getWidth()/2, this.mainActivity.getCurrent_screen().getHeight()-(Commons.BIG_PABLO_HEIGHT*(this.mainActivity.getCurrent_screen().getHeight()/208)), Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT);
     }
 
     private void getSprites() {
@@ -32,7 +34,7 @@ public class GameManager {
     }
 
     public void startThread(SurfaceHolder surfaceholder){
-        mainThread = new MainThread(surfaceholder, gameArea);
+        mainThread = new MainThread(this.mainActivity, surfaceholder, this.gameArea, this);
         mainThread.setRunning(true);
         mainThread.start();
     }
@@ -40,6 +42,11 @@ public class GameManager {
      *
      */
     public int VisualAspect;
+
+    public boolean update(){
+        this.pablo.update();
+        return true;
+    }
 
     /**
      *

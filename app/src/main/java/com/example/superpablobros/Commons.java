@@ -18,6 +18,9 @@ public interface Commons {
         int CLASSIC_BLOCK_WIDTH = 16;
         int CLASSIC_BLOCK_HEIGHT = 16;
 
+        //game var
+        int PABLO_VELOCITY = 4;
+
         //debug
         boolean DEBUG = false;
         float DEBUG_ELEMENTS_MARGIN = 10f;

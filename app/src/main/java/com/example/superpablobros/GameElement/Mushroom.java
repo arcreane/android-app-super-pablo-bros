@@ -12,7 +12,7 @@ public class Mushroom extends GameElement implements LinearMove {
      * Default constructor
      */
     public Mushroom() {
-        super( null,1,1,1,1);
+        super();
     }
 
     /**

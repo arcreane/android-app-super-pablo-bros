@@ -4,11 +4,14 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.example.superpablobros.GameManagement.BitmapBank;
+import com.example.superpablobros.MainActivity;
 
 /**
  * 
  */
 public class GameElement {
+
+    MainActivity mainActivity;
 
     int m_iX;
     int m_iY;
@@ -20,7 +23,8 @@ public class GameElement {
     /**
      * Default constructor
      */
-    public GameElement(BitmapBank bitmapBank, int p_iX, int p_iY, int p_iWidth, int p_iHeight) {
+    public GameElement(MainActivity mainActivity, BitmapBank bitmapBank, int p_iX, int p_iY, int p_iWidth, int p_iHeight) {
+        this.mainActivity = mainActivity;
         m_iX = p_iX;
         m_iY = p_iY;
         m_iOriginSpriteWidth = p_iWidth;
@@ -28,6 +32,10 @@ public class GameElement {
 
     }
 
+    public GameElement() {
+    }
+
+    public int getM_iX() { return m_iX; }
 
     /**
      * 
@@ -40,16 +48,12 @@ public class GameElement {
     /**
      * 
      */
-    public void step() {
-        // TODO implement here
-    }
+    public void update() {}
 
     /**
      * 
      */
-    public void draw(Canvas canvas) {
-        //canvas.drawBitmap(bmpBank.getCurrentBirdFrame(), 150, 150, null);
-    }
+    public void draw(Canvas canvas) {}
 
     /**
      * 

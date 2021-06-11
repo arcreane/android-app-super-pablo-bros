@@ -64,7 +64,6 @@ public class GameArea extends SurfaceView implements SurfaceHolder.Callback{
 
     public void doDraw(Canvas canvas){
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        gameManager.getPablo().setCurrentSprite(bitmapBank.getFrame(PabloSprites.STANDING, 0));
         gameManager.getPablo().draw(canvas);
     }
     /**

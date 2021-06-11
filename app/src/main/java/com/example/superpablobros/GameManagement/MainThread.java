@@ -4,22 +4,29 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.example.superpablobros.Commons;
+import com.example.superpablobros.MainActivity;
+
+import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class MainThread extends Thread {
+    private final MainActivity mainActivity;
     private final SurfaceHolder surfaceHolder;
-    // The actual view that handles inputs and draws to the surface
     private final GameArea gameArea;
+    private final GameManager gameManager;
 
     // flag to hold game state
     private boolean running;
 
-    public MainThread(SurfaceHolder surfaceHolder, GameArea gameArea) {
+    public MainThread(MainActivity mainActivity, SurfaceHolder surfaceHolder, GameArea gameArea, GameManager gameManager) {
         super();
+        this.mainActivity = mainActivity;
         this.surfaceHolder = surfaceHolder;
         this.gameArea = gameArea;
+        this.gameManager = gameManager;
     }
 
     public void setRunning(boolean running) {
@@ -45,19 +52,36 @@ public class MainThread extends Thread {
             beginTime = System.nanoTime();
             // try locking the canvas for exclusive pixel editing
             // in the surface
+            this.mainActivity.getJoystick().setOnMoveListener(new JoystickView.OnMoveListener() {
+                @Override
+                public void onMove(int angle, int strength) {
+                    if(angle<180 && angle>0){
+                        gameManager.getPablo().setM_iXVelocity(Commons.PABLO_VELOCITY);
+                        gameManager.getPablo().setM_iDirection(1);
+                        gameManager.getPablo().setRunning(true);
+                    }else if(angle>180 && angle<360){
+                        gameManager.getPablo().setM_iXVelocity(Commons.PABLO_VELOCITY);
+                        gameManager.getPablo().setM_iDirection(-1);
+                        gameManager.getPablo().setRunning(true);                    }
+                    else{
+                        gameManager.getPablo().setM_iXVelocity(0);
+                        gameManager.getPablo().setM_iDirection(0);
+                        gameManager.getPablo().setRunning(false);
+                    }
+                }
+            });
+
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-//                    if(this.birdView.update()){
-//                        // render state to the screen draws the canvas on the panel
-//                        this.birdView.doDraw(canvas);
-//                    }
-//                    else
-//                    {
-//                        running = false;
-//                    }
-
-                    this.gameArea.doDraw(canvas);
+                    if(this.gameManager.update()){
+                        // render state to the screen draws the canvas on the panel
+                        this.gameArea.doDraw(canvas);
+                    }
+                    else
+                    {
+                        running = false;
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

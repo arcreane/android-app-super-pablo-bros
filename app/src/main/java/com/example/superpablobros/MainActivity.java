@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         if(Commons.DEBUG){
             debugLayout = (RelativeLayout) findViewById(R.id.debugLayout);
             InitDebug(debugLayout, joystick, jump_button);
-
         }
         GameManager gameManager = new GameManager(this);
     }
@@ -177,5 +176,6 @@ public class MainActivity extends AppCompatActivity {
     public RelativeLayout getGameContainer(){
         return this.gameContainer;
     }
-    public Display getCurrent_screen() { return current_screen; }
+    public Display getCurrent_screen() { return this.current_screen; }
+    public JoystickView getJoystick() { return this.joystick; }
 }
