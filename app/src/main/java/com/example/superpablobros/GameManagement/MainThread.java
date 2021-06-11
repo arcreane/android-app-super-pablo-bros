@@ -44,7 +44,7 @@ public class MainThread extends Thread {
         int framesSkipped = 0;    // number of frames being skipped
         Paint paint;
         paint = new Paint();
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.rgb(97, 133, 248));
         paint.setTextSize(70);
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         while (running) {
@@ -56,16 +56,25 @@ public class MainThread extends Thread {
                 @Override
                 public void onMove(int angle, int strength) {
                     if(angle<180 && angle>0){
-                        gameManager.getPablo().setM_iXVelocity(Commons.PABLO_VELOCITY);
+                        if(gameManager.getPablo().getM_iVelocity()<Commons.PABLO_MAX_VELOCITY){
+                            gameManager.getPablo().setM_iVelocity(gameManager.getPablo().getM_iVelocity()+Commons.PABLO_VELOCITY_RATE);
+                        }
+                        else{
+                            gameManager.getPablo().setM_iVelocity(Commons.PABLO_MAX_VELOCITY);
+                        }
                         gameManager.getPablo().setM_iDirection(1);
                         gameManager.getPablo().setRunning(true);
                     }else if(angle>180 && angle<360){
-                        gameManager.getPablo().setM_iXVelocity(Commons.PABLO_VELOCITY);
+                        if(gameManager.getPablo().getM_iVelocity()<Commons.PABLO_MAX_VELOCITY){
+                            gameManager.getPablo().setM_iVelocity(gameManager.getPablo().getM_iVelocity()+Commons.PABLO_VELOCITY_RATE);
+                        }
+                        else{
+                            gameManager.getPablo().setM_iVelocity(Commons.PABLO_MAX_VELOCITY);
+                        }
                         gameManager.getPablo().setM_iDirection(-1);
                         gameManager.getPablo().setRunning(true);                    }
                     else{
-                        gameManager.getPablo().setM_iXVelocity(0);
-                        gameManager.getPablo().setM_iDirection(0);
+                        gameManager.getPablo().setM_iVelocity(0);
                         gameManager.getPablo().setRunning(false);
                     }
                 }

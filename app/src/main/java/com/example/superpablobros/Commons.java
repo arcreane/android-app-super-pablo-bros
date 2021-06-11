@@ -4,7 +4,7 @@ import android.content.Context;
 
 public interface Commons {
         // desired fps
-        int MAX_FPS = 30;
+        int MAX_FPS = 60;
         // maximum number of frames to be skipped
         int MAX_FRAME_SKIPS = 1;
         // the frame period
@@ -19,7 +19,13 @@ public interface Commons {
         int CLASSIC_BLOCK_HEIGHT = 16;
 
         //game var
-        int PABLO_VELOCITY = 4;
+        float PABLO_MAX_VELOCITY = 2.5f;
+        float PABLO_VELOCITY_RATE = 0.25f;
+        float PABLO_BASIC_VELOCITY = 0.25f;
+
+        //game var
+        float PABLO_MAX_JUMP_HEIGHT= 2.5f;
+        float PABLO_JUMP_SPEED = 0.25f;
 
         //debug
         boolean DEBUG = false;

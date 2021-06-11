@@ -18,8 +18,8 @@ public class Pablo extends GameElement {
 
     BitmapBank bitmapBank;
     Bitmap currentSprite;
-    int m_iXVelocity;
-    int m_iYVelocity;
+
+    float m_iVelocity;
     boolean running;
     int m_iDirection;
     int m_iFrameNb;
@@ -32,17 +32,23 @@ public class Pablo extends GameElement {
         this.bitmapBank = bitmapBank;
         this.m_iFrameNb = 0;
         this.currentSprite = this.bitmapBank.getFrame(PabloSprites.STANDING, this.m_iFrameNb);
-        m_iXVelocity = 0;
+        m_iVelocity = 0;
         m_iDirection = 0;
     }
 
     /**
      *
      */
-    public void setM_iXVelocity(int p_iXVelocity) {
+    public void setM_iVelocity(float p_iVelocity) {
         this.running = true;
-        this.m_iXVelocity = p_iXVelocity;
+        this.m_iVelocity = p_iVelocity;
     }
+
+    /**
+     *
+     */
+    public float getM_iVelocity() { return m_iVelocity; }
+
 
     /**
      *
@@ -69,7 +75,7 @@ public class Pablo extends GameElement {
     @Override
     public void draw(Canvas canvas) {
         if(m_iDirection<0){
-            currentSprite = bitmapBank.flipBitmap(currentSprite);
+            this.currentSprite = bitmapBank.flipBitmap(this.currentSprite);
         }
         canvas.drawBitmap(this.currentSprite, this.m_iX, this.m_iY, null);
     }
@@ -78,11 +84,12 @@ public class Pablo extends GameElement {
     public void update() {
         super.update();
         if(running){
-            m_iX= m_iX + (m_iXVelocity * (this.mainActivity.getCurrent_screen().getHeight() / 208)) * this.m_iDirection;
-            Log.d("moving", String.valueOf((this.m_iFrameNb)));
-            currentSprite = this.bitmapBank.getFrame(PabloSprites.RUNNING, this.m_iFrameNb);
+            m_iX = m_iX + (m_iVelocity * (this.mainActivity.getCurrent_screen().getHeight() / 208)) * this.m_iDirection;
+            currentSprite = this.bitmapBank.getFrame(PabloSprites.RUNNING, (int)Math.floor(m_iFrameNb / 3));
+            Log.d("framerate",String.valueOf((int)Math.floor(m_iFrameNb / 5)));
+            Log.d("framerate",String.valueOf(m_iFrameNb));
 
-            if(this.m_iFrameNb<2){
+            if(this.m_iFrameNb<8){
                 this.m_iFrameNb+=1;
             }
             else {

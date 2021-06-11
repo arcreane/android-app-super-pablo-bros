@@ -64,6 +64,7 @@ public class GameArea extends SurfaceView implements SurfaceHolder.Callback{
 
     public void doDraw(Canvas canvas){
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        canvas.drawARGB(0,97, 133, 248);
         gameManager.getPablo().draw(canvas);
     }
     /**

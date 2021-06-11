@@ -13,8 +13,8 @@ public class GameElement {
 
     MainActivity mainActivity;
 
-    int m_iX;
-    int m_iY;
+    float m_iX;
+    float m_iY;
     int m_iOriginSpriteWidth;
     int m_iOriginSpriteHeight;
 
@@ -29,13 +29,12 @@ public class GameElement {
         m_iY = p_iY;
         m_iOriginSpriteWidth = p_iWidth;
         m_iOriginSpriteHeight = p_iHeight;
-
     }
 
     public GameElement() {
     }
 
-    public int getM_iX() { return m_iX; }
+    public float getM_iX() { return m_iX; }
 
     /**
      * 
