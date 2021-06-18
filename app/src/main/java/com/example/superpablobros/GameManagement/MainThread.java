@@ -4,8 +4,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
+import android.view.View;
 
 import com.example.superpablobros.Commons;
 import com.example.superpablobros.MainActivity;
@@ -55,31 +56,51 @@ public class MainThread extends Thread {
             this.mainActivity.getJoystick().setOnMoveListener(new JoystickView.OnMoveListener() {
                 @Override
                 public void onMove(int angle, int strength) {
-                    if(angle<180 && angle>0){
-                        if(gameManager.getPablo().getM_iVelocity()<Commons.PABLO_MAX_VELOCITY){
-                            gameManager.getPablo().setM_iVelocity(gameManager.getPablo().getM_iVelocity()+Commons.PABLO_VELOCITY_RATE);
+                    if (strength > 0) {
+                        if (angle < 180 && angle > 0) {
+                            if (gameManager.getPablo().getM_iXVelocity() < Commons.PABLO_MAX_HORIZONTAL_VELOCITY) {
+                                gameManager.getPablo().setM_iXVelocity(gameManager.getPablo().getM_iXVelocity() + Commons.PABLO_VELOCITY_RATE);
+                            } else {
+                                gameManager.getPablo().setM_iXVelocity(Commons.PABLO_MAX_HORIZONTAL_VELOCITY);
+                            }
+                            gameManager.getPablo().setM_iDirection(1);
+                            gameManager.getPablo().setM_bRunning(true);
+                        } else if (angle > 180 && angle < 360) {
+                            if (gameManager.getPablo().getM_iXVelocity() < Commons.PABLO_MAX_HORIZONTAL_VELOCITY) {
+                                gameManager.getPablo().setM_iXVelocity(gameManager.getPablo().getM_iXVelocity() + Commons.PABLO_VELOCITY_RATE);
+                            } else {
+                                gameManager.getPablo().setM_iXVelocity(Commons.PABLO_MAX_HORIZONTAL_VELOCITY);
+                            }
+                            gameManager.getPablo().setM_iDirection(-1);
+                            gameManager.getPablo().setM_bRunning(true);
+                        } else {
+                            gameManager.getPablo().setM_iXVelocity(0);
+                            gameManager.getPablo().setM_bRunning(false);
                         }
-                        else{
-                            gameManager.getPablo().setM_iVelocity(Commons.PABLO_MAX_VELOCITY);
-                        }
-                        gameManager.getPablo().setM_iDirection(1);
-                        gameManager.getPablo().setRunning(true);
-                    }else if(angle>180 && angle<360){
-                        if(gameManager.getPablo().getM_iVelocity()<Commons.PABLO_MAX_VELOCITY){
-                            gameManager.getPablo().setM_iVelocity(gameManager.getPablo().getM_iVelocity()+Commons.PABLO_VELOCITY_RATE);
-                        }
-                        else{
-                            gameManager.getPablo().setM_iVelocity(Commons.PABLO_MAX_VELOCITY);
-                        }
-                        gameManager.getPablo().setM_iDirection(-1);
-                        gameManager.getPablo().setRunning(true);                    }
+                    }
                     else{
-                        gameManager.getPablo().setM_iVelocity(0);
-                        gameManager.getPablo().setRunning(false);
+                        gameManager.getPablo().setM_iXVelocity(0);
+                        gameManager.getPablo().setM_bRunning(false);
                     }
                 }
             });
-
+            this.mainActivity.getJump_button().setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch(event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            if(gameManager.getPablo().getM_iYVelocity()<Commons.PABLO_MAX_HORIZONTAL_VELOCITY) {
+                                gameManager.getPablo().setM_iYVelocity(gameManager.getPablo().getM_iYVelocity()+Commons.PABLO_MAX_VERTICAL_VELOCITY);
+                            }
+                            gameManager.getPablo().setM_bJumping(true);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            // RELEASED
+                            break;
+                    }
+                    return true;
+                }
+            });
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {

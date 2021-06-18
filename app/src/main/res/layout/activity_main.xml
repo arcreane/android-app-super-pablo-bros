@@ -13,8 +13,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/gameLayout"
-            android:background="@color/teal_200">
+            android:id="@+id/gameLayout">
 
         </RelativeLayout>
 
@@ -46,7 +45,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/rounded_button"
-                android:text="Jump" />
+                android:text="Jump"
+                android:textColor="#95555555"
+                app:strokeColor="#FFFFFF" />
 
         </RelativeLayout>
 

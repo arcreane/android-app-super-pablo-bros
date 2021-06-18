@@ -38,6 +38,11 @@ public class BitmapBank {
         pabloSpritesList.get(PabloSprites.RUNNING).add(getScaledExtractedBitmap(mainActivity, 43,26,Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT));
         pabloSpritesList.get(PabloSprites.RUNNING).add(getScaledExtractedBitmap(mainActivity, 60,26,Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT));
         pabloSpritesList.get(PabloSprites.RUNNING).add(getScaledExtractedBitmap(mainActivity, 77,26,Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT));
+
+        pabloSpritesList.put(PabloSprites.JUMPING, new ArrayList<>());
+        pabloSpritesList.get(PabloSprites.JUMPING).add(getScaledExtractedBitmap(mainActivity, 119,26,Commons.PABLO_WIDTH, Commons.BIG_PABLO_HEIGHT));
+
+
     }
 
     public Bitmap getFrame(PabloSprites pabloSprites, int p_iFrameNumber){

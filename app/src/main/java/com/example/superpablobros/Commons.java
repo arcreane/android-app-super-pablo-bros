@@ -19,13 +19,14 @@ public interface Commons {
         int CLASSIC_BLOCK_HEIGHT = 16;
 
         //game var
-        float PABLO_MAX_VELOCITY = 2.5f;
+        float PABLO_MAX_HORIZONTAL_VELOCITY = 2.5f;
         float PABLO_VELOCITY_RATE = 0.25f;
         float PABLO_BASIC_VELOCITY = 0.25f;
 
-        //game var
-        float PABLO_MAX_JUMP_HEIGHT= 2.5f;
-        float PABLO_JUMP_SPEED = 0.25f;
+        //game var jump
+        float PABLO_MAX_JUMP_TIME= 2.0f * MAX_FPS;
+        float PABLO_JUMP_SPEED = 0.15f * MAX_FPS;
+        float PABLO_MAX_VERTICAL_VELOCITY = 6.0f;
 
         //debug
         boolean DEBUG = false;

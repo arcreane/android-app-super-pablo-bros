@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout gameContainer;
     RelativeLayout debugLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,4 +180,5 @@ public class MainActivity extends AppCompatActivity {
     }
     public Display getCurrent_screen() { return this.current_screen; }
     public JoystickView getJoystick() { return this.joystick; }
+    public Button getJump_button() { return jump_button; }
 }
